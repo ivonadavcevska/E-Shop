@@ -1,0 +1,38 @@
+﻿@using (Html.BeginForm("Create", "Products", FormMethod.Post))
+{
+    <div class="text-center">
+        <h2>Add New Product</h2>
+        <form>
+            Name <input id="name" name="Name" type="text" style="margin-bottom:15px" />
+            <br />
+            Description <input id="description" name="Description" type="text" style="margin-bottom:15px" />
+            <br />
+
+            Price <input id="price" name="Price" type="number" style="margin-bottom:15px" />
+            <br />
+
+            ImageUrl <input id="imageUrl" name="ImageUrl" type="text" style="margin-bottom:15px" />
+            <br />
+
+            Stock <input id="stock" name="Stock" type="number" style="margin-bottom:15px" />
+            <br />
+
+            Material <input id="material" name="Material" type="text" style="margin-bottom:15px" />
+            <br />
+
+            Color <input id="color" name="Color" type="text" style="margin-bottom:15px" />
+            <br />
+
+            Brand <input id="brand" name="Brand" type="text" style="margin-bottom:15px" />
+            <br />
+
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+    </div>
+
+
+}
+
+
+

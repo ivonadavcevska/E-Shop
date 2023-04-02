@@ -1,0 +1,25 @@
+﻿@model Product
+
+<div>
+    <div class="text-center">
+        <img src="@Model.ImageUrl" alt="@Model.Name" style="max-height:300px;max-width:300px"/>
+    </div>
+    <div class="text-center">
+        Name: @Html.DisplayFor(modelItem => Model.Name)
+    </div>
+    <div class="text-center">
+        Price: $@Html.DisplayFor(modelItem => Model.Price)
+    </div>
+    <div class="text-center">
+        Material: @Html.DisplayFor(modelItem => Model.Material)
+    </div>
+    <div class="text-center">
+        Color: @Html.DisplayFor(modelItem => Model.Color)
+    </div>
+    <div class="text-center">
+        Brand: @Html.DisplayFor(modelItem => Model.Brand)
+    </div>
+    <div class="text-center">
+        @Html.DisplayFor(modelItem => Model.Description)
+    </div>
+</div>

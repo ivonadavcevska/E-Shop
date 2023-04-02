@@ -1,0 +1,94 @@
+﻿@model E_Shop.ViewModels.ProductPaginationViewModel
+
+
+
+<div>
+    <div id="searchBar">
+        <form class="d-flex me-2" asp-controller="Products" asp-action="Index">
+            <input name="searchString" type="text" class="form-control" placeholder="Search for a product..." style="max-width:300px" />
+        </form>
+     </div>
+     
+     <div id="searchBa2r">
+         <form class="d-flex me-2" asp-controller="Products" asp-action="FilteredProducts">
+            @if (Model!=null)
+             @foreach (var color in Model.Colors)
+            {
+                <div>
+                    <input type="checkbox" name="colors" value="@color" @(Model.SelectedColors.Contains(color) ? "checked" : "")>
+                    <label>@color</label>
+                </div>
+            }
+            <input type="submit" class="btn btn-success"  />
+        </form>
+     </div>
+     
+     <table class="table">
+         <thead>
+             <tr>
+                 <th class="text-center"> Image </th>
+                 <th> Name </th>
+                 <th> Price </th>
+                 <th></th>
+             </tr>   
+         </thead>
+         <tbody>
+             @foreach (var product in Model.Products)
+             {
+                 <tr>
+                     <td class="align-middle, text-center">
+                         <img src="@product.ImageUrl" alt="@product.Name" style="max-width:250px; max-height:250px;margin-top:50px; margin-bottom:50px">
+                     </td>
+                     <td class="align-middle">
+                         @Html.DisplayFor(modelItem => product.Name)
+                     </td>
+                        <td class="align-middle">
+                            $@Html.DisplayFor(modelItem => product.Price)
+                        </td>
+                        <td class="align-middle">
+                            <a class="btn btn-outline-info" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">Details</a>
+                        <a class="btn btn-danger" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                        </td>
+                 </tr>
+                }
+        </tbody>
+        
+    </table>
+
+
+    @if (Model.TotalPages > 1)
+    {
+        <div>
+            <nav aria-label="Product navigation">
+                <ul class="pagination">
+                    @if (Model.CurrentPage > 1)
+                    {
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.CurrentPage - 1)">Previous</a></li>
+                    }
+
+                    @for (int i = 1; i <= Model.TotalPages; i++)
+                    {
+                        if (i == Model.CurrentPage)
+                        {
+                            <li class="page-item active"><span class="page-link">@i</span></li>
+                        }
+                        else
+                        {
+                            <li class="page-item"><a class="page-link" href="?page=@i">@i</a></li>
+                        }
+                    }
+
+                    @if (Model.CurrentPage < Model.TotalPages)
+                    {
+                        <li class="page-item"><a class="page-link" href="?page=@(Model.CurrentPage + 1)">Next</a></li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    }
+
+    <div id="createButton" style="float:right">
+        <a class="btn btn-success" asp-controller="Products" asp-action="Create">Create new hat</a>
+    </div>
+
+</div>
