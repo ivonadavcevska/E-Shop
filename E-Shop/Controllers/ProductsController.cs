@@ -8,11 +8,11 @@ namespace E_Shop.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly ProductsServiceInterface productsService;
+        private readonly ProductsService productsService;
 
         
 
-        public ProductsController(ProductsServiceInterface service)
+        public ProductsController(ProductsService service)
         {
             
             productsService = service;
@@ -58,6 +58,22 @@ namespace E_Shop.Controllers
         public IActionResult Create(Product product)
         {
             productsService.addNewProduct(product);
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult UpdateView(int id)
+        {
+            var product = productsService.getProductById(id);
+            
+            return View("Update", product);
+        }
+
+        [HttpPost]
+        public IActionResult Update(Product product)
+        {
+          
+            productsService.editProduct(product);
 
             return RedirectToAction("Index");
         }

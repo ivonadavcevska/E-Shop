@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(
 //builder.Services.AddSingleton<StubData>();
 
 
-builder.Services.AddTransient<ProductsServiceInterface,ProductsService>();
+builder.Services.AddTransient<ProductsService>();
 
 var app = builder.Build();
 

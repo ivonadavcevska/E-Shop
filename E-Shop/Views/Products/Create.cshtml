@@ -1,29 +1,29 @@
 ﻿@using (Html.BeginForm("Create", "Products", FormMethod.Post))
 {
-    <div class="text-center">
+    <div class="text-center col-lg-5" style="margin-left:auto; margin-right:auto">
         <h2>Add New Product</h2>
         <form>
-            Name <input id="name" name="Name" type="text" style="margin-bottom:15px" />
+            Name <input id="name" name="Name" type="text" placeholder="Name" class="form-control" />
             <br />
-            Description <input id="description" name="Description" type="text" style="margin-bottom:15px" />
-            <br />
-
-            Price <input id="price" name="Price" type="number" style="margin-bottom:15px" />
+            Description <textarea id="description" name="Description" type="text" placeholder="Description" class="form-control" rows="3" ></textarea>
             <br />
 
-            ImageUrl <input id="imageUrl" name="ImageUrl" type="text" style="margin-bottom:15px" />
+            Price <input id="price" name="Price" type="number" placeholder="Price" class="form-control" />
             <br />
 
-            Stock <input id="stock" name="Stock" type="number" style="margin-bottom:15px" />
+            ImageUrl <textarea id="imageUrl" name="ImageUrl" type="text" placeholder="ImageUrl" class="form-control" rows="2" ></textarea>
             <br />
 
-            Material <input id="material" name="Material" type="text" style="margin-bottom:15px" />
+            Stock <input id="stock" name="Stock" type="number" placeholder="Stock" class="form-control" />
             <br />
 
-            Color <input id="color" name="Color" type="text" style="margin-bottom:15px" />
+            Material <input id="material" name="Material" type="text" placeholder="Material" class="form-control" />
             <br />
 
-            Brand <input id="brand" name="Brand" type="text" style="margin-bottom:15px" />
+            Color <input id="color" name="Color" type="text" placeholder="Color" class="form-control" />
+            <br />
+
+            Brand <input id="brand" name="Brand" type="text" placeholder="Brand" class="form-control" />
             <br />
 
             <button type="submit" class="btn btn-primary">Add</button>

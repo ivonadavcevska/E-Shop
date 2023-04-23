@@ -67,11 +67,12 @@ namespace E_Shop.Services
             int totalPages = (int)Math.Ceiling((double)totalCount / pageSize);
             var pagedProducts = products.Skip((page - 1) * pageSize).Take(pageSize);
 
-            var x = products.Select(p => p.Color).Distinct().ToList();
+            var allColors = _context.Products.Select(c => c.Color).Distinct().ToList();
+
             
-            var selectedColors = new List<String>();
+            var checkedColors = new List<String>();
             if (colors != null)
-                selectedColors = colors;
+                checkedColors = colors;
 
             return new ProductPaginationViewModel
             {
@@ -80,8 +81,8 @@ namespace E_Shop.Services
                 TotalCount = totalCount,
                 TotalPages = totalPages,
                 Products = pagedProducts,
-                SelectedColors = selectedColors,
-                Colors = x
+                Colors = allColors,
+                CheckedColors = checkedColors
             };
 
         }
@@ -104,6 +105,17 @@ namespace E_Shop.Services
             }
             else
                 throw new ArgumentException("Bad ID! Product with:" + id.ToString() + " does not exsist!");
+        }
+
+        public void editProduct(Product product)
+        {
+            _context.Update(product);
+            
+            _context.SaveChanges();
+
+
+
+
         }
     }
 }

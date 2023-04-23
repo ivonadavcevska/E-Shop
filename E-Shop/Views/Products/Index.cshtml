@@ -8,17 +8,26 @@
             <input name="searchString" type="text" class="form-control" placeholder="Search for a product..." style="max-width:300px" />
         </form>
      </div>
+
+     <hr />
      
-     <div id="searchBa2r">
-         <form class="d-flex me-2" asp-controller="Products" asp-action="FilteredProducts">
-            @if (Model!=null)
+     <div id="filterBar">
+         <form asp-controller="Products" asp-action="FilteredProducts">
+            @if (Model != null)
+            {
+                <p>Colors:</p>
+            }
+
              @foreach (var color in Model.Colors)
             {
                 <div>
-                    <input type="checkbox" name="colors" value="@color" @(Model.SelectedColors.Contains(color) ? "checked" : "")>
-                    <label>@color</label>
+                   <input type="checkbox" name="colors" value="@color" checked="@Model.CheckedColors.Contains(color)">
+                    <label style="margin-right:10px">@color</label>
+                     <br />
+
                 </div>
             }
+            <br/>
             <input type="submit" class="btn btn-success"  />
         </form>
      </div>
@@ -47,7 +56,8 @@
                         </td>
                         <td class="align-middle">
                             <a class="btn btn-outline-info" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">Details</a>
-                        <a class="btn btn-danger" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                            <a class="btn btn-info" asp-controller="Products" asp-action="UpdateView" asp-route-id="@product.Id">Edit</a>
+                            <a class="btn btn-danger" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
                         </td>
                  </tr>
                 }

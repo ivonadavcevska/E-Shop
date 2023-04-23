@@ -10,6 +10,8 @@ namespace E_Shop.ViewModels
         public int TotalPages { get; set; }
         public IEnumerable<Product> Products { get; set; }
         public List<string> Colors { get; set; }
-        public List<string> SelectedColors { get; set; }
+
+        public List<string> CheckedColors { get; set; }
+        
     }
 }

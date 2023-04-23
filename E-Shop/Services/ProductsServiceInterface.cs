@@ -13,6 +13,8 @@ namespace E_Shop.Services
         ProductPaginationViewModel getProductsByFilter(List<string> colors, int page);
 
         void addNewProduct(Product product);
+
+        void editProduct(Product product);
         void deleteProduct(int id);
     }
 }
